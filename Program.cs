@@ -1,17 +1,31 @@
+using LANMIC_ComBank_Interface.Config;
+
 namespace LANMIC_ComBank_Interface
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+
+            //// Check if config exists
+            //if (!AppConfigService.ConfigExists())
+            //{
+            //    var setupForm = new SetupForm();
+            //    if (setupForm.ShowDialog() != DialogResult.OK)
+            //    {
+            //        MessageBox.Show("Setup not completed. Application will exit.");
+            //        return;
+            //    }
+            //}
+
+            //// Load config
+            //var config = AppConfigService.Load();
+
+
+            //Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
     }
 }
