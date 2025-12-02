@@ -16,5 +16,25 @@ namespace LANMIC_ComBank_Interface.Forms.Tools.UserAuthorization
         {
             InitializeComponent();
         }
+
+        private void chkNew_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtOperationalModule_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
