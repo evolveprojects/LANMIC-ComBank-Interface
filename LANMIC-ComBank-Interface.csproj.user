@@ -7,6 +7,12 @@
     <Compile Update="Forms\Tools\frmUserCreation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Tools\Sage\frmBanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Tools\Sage\frmVenders.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

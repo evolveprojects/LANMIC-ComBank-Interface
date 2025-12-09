@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupForm));
             label1 = new Label();
             txtAppName = new TextBox();
             txtDatabase = new TextBox();
@@ -105,9 +106,9 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(25, 134);
             label3.Name = "label3";
-            label3.Size = new Size(92, 21);
+            label3.Size = new Size(111, 21);
             label3.TabIndex = 0;
-            label3.Text = "SQL Server";
+            label3.Text = "SQL Server IP";
             // 
             // label4
             // 
@@ -148,6 +149,7 @@
             btnSave.TabIndex = 2;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -189,11 +191,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(500, 500);
             MinimumSize = new Size(500, 500);
             Name = "SetupForm";
-            Text = "Setup Application";
+            Text = "d";
             ResumeLayout(false);
             PerformLayout();
         }
