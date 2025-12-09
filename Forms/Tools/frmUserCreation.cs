@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LANMIC_ComBank_Interface.HelpServices;
 
 namespace LANMIC_ComBank_Interface.Forms.Tools
 {
@@ -15,7 +16,12 @@ namespace LANMIC_ComBank_Interface.Forms.Tools
         public frmUserCreation()
         {
             InitializeComponent();
+
+            //horizontal line
+            ControlHelpers.AddHorizontalSeparator(this);
         }
+    
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -36,5 +42,7 @@ namespace LANMIC_ComBank_Interface.Forms.Tools
         {
 
         }
+
+     
     }
 }

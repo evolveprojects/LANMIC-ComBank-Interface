@@ -1,0 +1,170 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LANMIC_ComBank_Interface.Models.SageModels
+{
+    public class VenderModel
+    {
+        public string odatacontext { get; set; }
+        public string VendorNumber { get; set; }
+        public string ShortName { get; set; }
+        public string GroupCode { get; set; }
+        public string Status { get; set; }
+        public object InactiveDate { get; set; }
+        public DateTime DateLastMaintained { get; set; }
+        public string OnHold { get; set; }
+        public DateTime StartDate { get; set; }
+        public string ParticipantID { get; set; }
+        public string VendorName { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string AddressLine3 { get; set; }
+        public string AddressLine4 { get; set; }
+        public string City { get; set; }
+        public string StateProvince { get; set; }
+        public string ZipPostalCode { get; set; }
+        public string Country { get; set; }
+        public string ContactName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string FaxNumber { get; set; }
+        public string PrimaryRemitToLocation { get; set; }
+        public string AccountSet { get; set; }
+        public string CurrencyCode { get; set; }
+        public string RateType { get; set; }
+        public string BankCode { get; set; }
+        public string PrintSeparateChecks { get; set; }
+        public string DistributionSet { get; set; }
+        public string DistributionCode { get; set; }
+        public string GLAccount { get; set; }
+        public string Terms { get; set; }
+        public string DuplicateAmountCode { get; set; }
+        public string DuplicateDateCode { get; set; }
+        public string TaxGroup { get; set; }
+        public int TaxClassCode1 { get; set; }
+        public int TaxClassCode2 { get; set; }
+        public int TaxClassCode3 { get; set; }
+        public int TaxClassCode4 { get; set; }
+        public int TaxClassCode5 { get; set; }
+        public string TaxReportingType { get; set; }
+        public string Num1099CPRSTaxNumber { get; set; }
+        public string TaxType { get; set; }
+        public string Num1099CPRSCode { get; set; }
+        public int CreditLimit { get; set; }
+        public float BalanceDueInVendorCurrency { get; set; }
+        public float BalanceDueInFunctionalCurrency { get; set; }
+        public float TotalPrepaidInvoiceVendorCurr { get; set; }
+        public float TotalPrepaidInvoiceFunctionalCurr { get; set; }
+        public object DateOfLastRevaluation { get; set; }
+        public float LastRevaluationBalance { get; set; }
+        public int NumberOfOpenInvoices { get; set; }
+        public int NumberOfPrepaidInvoices { get; set; }
+        public int NumberOfPaidInvoices { get; set; }
+        public int NumberOfDaysToPay { get; set; }
+        public DateTime DateOfLargestInvoice { get; set; }
+        public DateTime DateOfHighestBalance { get; set; }
+        public object DateOfLargestInvoiceLastYear { get; set; }
+        public object DateOfHighestBalanceLastYear { get; set; }
+        public DateTime DateOfLastActivity { get; set; }
+        public DateTime DateOfLastInvoice { get; set; }
+        public DateTime DateOfLastCreditNote { get; set; }
+        public object DateOfLastDebitNote { get; set; }
+        public DateTime DateOfLastPayment { get; set; }
+        public object DateOfLastDiscount { get; set; }
+        public DateTime DateOfLastAdjustment { get; set; }
+        public string NumberOfLargestInvoice { get; set; }
+        public string NumberOfLargestInvoiceLastY { get; set; }
+        public float LargestInvoiceVendorCurrency { get; set; }
+        public float HighestBalanceVendorCurrency { get; set; }
+        public float LargestInvoiceLastYearVendorCurrency { get; set; }
+        public float HighBalanceLastYearVendorCurrency { get; set; }
+        public int LastInvoiceAmtVendorCurrency { get; set; }
+        public float LastCreditNoteAmountVendorCurrency { get; set; }
+        public float LastDebitNoteAmountVendorCurrency { get; set; }
+        public int LastPaymentVendorCurrency { get; set; }
+        public float LastDiscountAmountVendorCurrency { get; set; }
+        public int LastAdjustmentAmountVendorCurrency { get; set; }
+        public float LargestInvoiceFunctionalCurrency { get; set; }
+        public float HighestBalanceFunctionalCurrency { get; set; }
+        public float LargestInvoiceLastYearFunctionalCurrency { get; set; }
+        public float HighBalanceLastYearFunctionalCurrency { get; set; }
+        public int LastInvoiceAmountFunctionalCurrency { get; set; }
+        public float LastCreditNoteAmountFunctionalCurrency { get; set; }
+        public float LastDebitNoteAmountFunctionalCurrency { get; set; }
+        public int LastPaymentFunctionalCurrency { get; set; }
+        public float LastDiscountAmountFunctionalCurrency { get; set; }
+        public int LastAdjustmentAmountFunctionalCurrency { get; set; }
+        public string PaymentCode { get; set; }
+        public string TaxRegistrationCode1 { get; set; }
+        public string TaxRegistrationCode2 { get; set; }
+        public string TaxRegistrationCode3 { get; set; }
+        public string TaxRegistrationCode4 { get; set; }
+        public string TaxRegistrationCode5 { get; set; }
+        public string DistributionType { get; set; }
+        public string CheckLanguage { get; set; }
+        public float AverageDaysToPay { get; set; }
+        public float TotalInvoicesPaidFunctionalCurr { get; set; }
+        public float TotalInvoicesPaidVendorCurr { get; set; }
+        public int TotalNumberOfPayments { get; set; }
+        public string TaxIncluded1 { get; set; }
+        public string TaxIncluded2 { get; set; }
+        public string TaxIncluded3 { get; set; }
+        public string TaxIncluded4 { get; set; }
+        public string TaxIncluded5 { get; set; }
+        public string ContactsEmail { get; set; }
+        public string Email { get; set; }
+        public string WebSite { get; set; }
+        public string ContactsPhone { get; set; }
+        public string ContactsFax { get; set; }
+        public string DeliveryMethod { get; set; }
+        public int PercentRetained { get; set; }
+        public int DaysRetained { get; set; }
+        public string RetainageTermsCode { get; set; }
+        public float AmountRetainedVendorCurrency { get; set; }
+        public float AmountRetainedFunctionalCurrency { get; set; }
+        public int NumberOfOptionalFields { get; set; }
+        public string ProcessCommandCode { get; set; }
+        public int NextClientUniqueID { get; set; }
+        public string LegalName { get; set; }
+        public string Zero1099AmountWarning { get; set; }
+        public bool SuppressIntegration { get; set; }
+        public string APVersion { get; set; }
+        public string Database { get; set; }
+        public string Mode { get; set; }
+        public string BusinessRegistrationNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public bool FATCA { get; set; }
+        public bool Num2ndTINNotice { get; set; }
+        public string TaxWithholdingState { get; set; }
+        public List<VendorOptionalFieldValue> VendorOptionalFieldValues { get; set; }
+        public List<object> VendorContactSelection { get; set; }
+        public string UpdateOperation { get; set; }
+    }
+
+    public class VendorOptionalFieldValue
+    {
+        public string VendorNumber { get; set; }
+        public string OptionalField { get; set; }
+        public string Value { get; set; }
+        public string VendorOptionalFieldValueType { get; set; }
+        public int Length { get; set; }
+        public int Decimals { get; set; }
+        public bool AllowBlank { get; set; }
+        public bool Validate { get; set; }
+        public string ValueSet { get; set; }
+        public int TypedValueFieldIndex { get; set; }
+        public string TextValue { get; set; }
+        public float AmountValue { get; set; }
+        public int NumberValue { get; set; }
+        public int IntegerValue { get; set; }
+        public bool YesNoValue { get; set; }
+        public object DateValue { get; set; }
+        public DateTime TimeValue { get; set; }
+        public string OptionalFieldDescription { get; set; }
+        public string ValueDescription { get; set; }
+        public string UpdateOperation { get; set; }
+    }
+}

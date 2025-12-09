@@ -1,4 +1,5 @@
 using LANMIC_ComBank_Interface.Forms.Tools;
+using LANMIC_ComBank_Interface.Forms.Tools.Sage;
 using LANMIC_ComBank_Interface.Forms.Tools.UserAuthorization;
 
 namespace LANMIC_ComBank_Interface
@@ -15,6 +16,8 @@ namespace LANMIC_ComBank_Interface
         {
             lbDate.Text = DateTime.Now.ToLongDateString();
             timer.Start();
+            
+           // vendersToolStripMenuItem.Visible = false;  // hide Venders menu item
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -66,6 +69,16 @@ namespace LANMIC_ComBank_Interface
                 activeForm.Close();
                 activeForm = null;
             }
+        }
+
+        private void vendersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVenders());
+        }
+
+        private void banksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBanks());
         }
     }
 }

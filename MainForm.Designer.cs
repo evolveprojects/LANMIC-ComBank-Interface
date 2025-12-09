@@ -37,9 +37,14 @@
             reportToolStripMenuItem = new ToolStripMenuItem();
             toolsToolStripMenuItem = new ToolStripMenuItem();
             customizeToolStripMenuItem = new ToolStripMenuItem();
+            vendersToolStripMenuItem = new ToolStripMenuItem();
+            banksToolStripMenuItem = new ToolStripMenuItem();
+            paymToolStripMenuItem = new ToolStripMenuItem();
             combankToolStripMenuItem = new ToolStripMenuItem();
             userCreationToolStripMenuItem = new ToolStripMenuItem();
             userAuthorizationToolStripMenuItem = new ToolStripMenuItem();
+            settingToolStripMenuItem = new ToolStripMenuItem();
+            databaseBackupToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             panelBody = new Panel();
@@ -47,8 +52,6 @@
             lbDate = new Label();
             pictureBox = new PictureBox();
             timer = new System.Windows.Forms.Timer(components);
-            settingToolStripMenuItem = new ToolStripMenuItem();
-            databaseBackupToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             panelBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
@@ -62,7 +65,7 @@
             menuStrip.Name = "menuStrip";
             menuStrip.Size = new Size(1105, 24);
             menuStrip.TabIndex = 0;
-            menuStrip.Text = "menuStrip1";
+            menuStrip.Text = "menuStrip";
             // 
             // fileToolStripMenuItem
             // 
@@ -75,7 +78,7 @@
             // 
             homeToolStripMenuItem.Image = (Image)resources.GetObject("homeToolStripMenuItem.Image");
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(180, 22);
+            homeToolStripMenuItem.Size = new Size(107, 22);
             homeToolStripMenuItem.Text = "Home";
             homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
@@ -83,7 +86,7 @@
             // 
             exitToolStripMenuItem.Image = (Image)resources.GetObject("exitToolStripMenuItem.Image");
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(107, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -102,10 +105,34 @@
             // 
             // customizeToolStripMenuItem
             // 
+            customizeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendersToolStripMenuItem, banksToolStripMenuItem, paymToolStripMenuItem });
             customizeToolStripMenuItem.Image = (Image)resources.GetObject("customizeToolStripMenuItem.Image");
             customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
             customizeToolStripMenuItem.Size = new Size(172, 22);
             customizeToolStripMenuItem.Text = "Sage";
+            // 
+            // vendersToolStripMenuItem
+            // 
+            vendersToolStripMenuItem.Image = (Image)resources.GetObject("vendersToolStripMenuItem.Image");
+            vendersToolStripMenuItem.Name = "vendersToolStripMenuItem";
+            vendersToolStripMenuItem.Size = new Size(165, 22);
+            vendersToolStripMenuItem.Text = "Venders";
+            vendersToolStripMenuItem.Click += vendersToolStripMenuItem_Click;
+            // 
+            // banksToolStripMenuItem
+            // 
+            banksToolStripMenuItem.Image = (Image)resources.GetObject("banksToolStripMenuItem.Image");
+            banksToolStripMenuItem.Name = "banksToolStripMenuItem";
+            banksToolStripMenuItem.Size = new Size(165, 22);
+            banksToolStripMenuItem.Text = "Banks";
+            banksToolStripMenuItem.Click += banksToolStripMenuItem_Click;
+            // 
+            // paymToolStripMenuItem
+            // 
+            paymToolStripMenuItem.Image = (Image)resources.GetObject("paymToolStripMenuItem.Image");
+            paymToolStripMenuItem.Name = "paymToolStripMenuItem";
+            paymToolStripMenuItem.Size = new Size(165, 22);
+            paymToolStripMenuItem.Text = "Import Payments";
             // 
             // combankToolStripMenuItem
             // 
@@ -129,6 +156,20 @@
             userAuthorizationToolStripMenuItem.Size = new Size(172, 22);
             userAuthorizationToolStripMenuItem.Text = "User Authorization";
             userAuthorizationToolStripMenuItem.Click += userAuthorizationToolStripMenuItem_Click;
+            // 
+            // settingToolStripMenuItem
+            // 
+            settingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { databaseBackupToolStripMenuItem });
+            settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            settingToolStripMenuItem.Size = new Size(56, 20);
+            settingToolStripMenuItem.Text = "&Setting";
+            // 
+            // databaseBackupToolStripMenuItem
+            // 
+            databaseBackupToolStripMenuItem.Image = (Image)resources.GetObject("databaseBackupToolStripMenuItem.Image");
+            databaseBackupToolStripMenuItem.Name = "databaseBackupToolStripMenuItem";
+            databaseBackupToolStripMenuItem.Size = new Size(164, 22);
+            databaseBackupToolStripMenuItem.Text = "Database Backup";
             // 
             // helpToolStripMenuItem
             // 
@@ -192,20 +233,6 @@
             // 
             timer.Tick += timer_Tick;
             // 
-            // settingToolStripMenuItem
-            // 
-            settingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { databaseBackupToolStripMenuItem });
-            settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            settingToolStripMenuItem.Size = new Size(56, 20);
-            settingToolStripMenuItem.Text = "&Setting";
-            // 
-            // databaseBackupToolStripMenuItem
-            // 
-            databaseBackupToolStripMenuItem.Image = (Image)resources.GetObject("databaseBackupToolStripMenuItem.Image");
-            databaseBackupToolStripMenuItem.Name = "databaseBackupToolStripMenuItem";
-            databaseBackupToolStripMenuItem.Size = new Size(180, 22);
-            databaseBackupToolStripMenuItem.Text = "Database Backup";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -251,5 +278,8 @@
         private ToolStripMenuItem homeToolStripMenuItem;
         private ToolStripMenuItem settingToolStripMenuItem;
         private ToolStripMenuItem databaseBackupToolStripMenuItem;
+        private ToolStripMenuItem vendersToolStripMenuItem;
+        private ToolStripMenuItem banksToolStripMenuItem;
+        private ToolStripMenuItem paymToolStripMenuItem;
     }
 }
