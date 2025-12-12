@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LANMIC_ComBank_Interface.Data;
 using LANMIC_ComBank_Interface.Models.DatabaseModels;
+using LANMIC_ComBank_Interface.Models.SessionModel;
+using LANMIC_ComBank_Interface.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace LANMIC_ComBank_Interface.HelpServices
@@ -26,8 +28,8 @@ namespace LANMIC_ComBank_Interface.HelpServices
         // Ensure DB and tables exist
         public async Task EnsureDatabaseCreatedAsync()
         {
-            using var context = new AppDbContext(_connectionString);
-            await context.Database.EnsureCreatedAsync();
+            using var db = new AppDbContext(_connectionString);
+            await db.Database.EnsureCreatedAsync();
         }
 
         // Register user (returns success + message)
@@ -41,10 +43,10 @@ namespace LANMIC_ComBank_Interface.HelpServices
 
         //    try
         //    {
-        //        using var context = new AppDbContext(_connectionString);
+        //        using var db = new AppDbContext(_connectionString);
 
         //        // basic uniqueness check
-        //        if (await context.UserDetails.AnyAsync(u => u.Username == username && u.IsActive == true))
+        //        if (await db.UserDetails.AnyAsync(u => u.Username == username && u.IsActive == true))
         //            return (false, "Username name already in use.");
 
         //       // var hash = BCrypt.Net.BCrypt.HashPassword(password, _bcryptWorkFactor);
@@ -58,8 +60,8 @@ namespace LANMIC_ComBank_Interface.HelpServices
         //            IsActive = true
         //        };
 
-        //        context.UserDetails.Add(user);
-        //        await context.SaveChangesAsync();
+        //        db.UserDetails.Add(user);
+        //        await db.SaveChangesAsync();
 
         //        return (true, "Registration successful.");
         //    }
@@ -71,19 +73,26 @@ namespace LANMIC_ComBank_Interface.HelpServices
 
         // Login user
         // returns (success, message, user) where user is null on failure
-        public async Task<(bool Success, string Message, UserDetails User)> LoginAsync(string usernameOrEmail, string password)
-        {
+        public async Task<(bool Success, string Message)> LoginAsync(string usernameOrEmail, string password)
+        {           
+            UserSession.Clear();
             if (string.IsNullOrWhiteSpace(usernameOrEmail) || string.IsNullOrWhiteSpace(password))
-                return (false, "Invalid username or password.", null);
+            {     
+                return (false, "Invalid username or password.");
+            }               
+
 
             try
             {
-                using var context = new AppDbContext(_connectionString);
-                var user = await context.UserDetails
+                using var db = new AppDbContext(_connectionString);
+                var user = await db.UserDetails
                     .FirstOrDefaultAsync(u => u.Username == usernameOrEmail && u.IsActive == true);
 
                 if (user == null)
-                    return (false, "Invalid username or password.", null);
+                {
+                
+                    return (false, "Invalid username or password.");
+                }
 
                 // check lockout
                 //if (user.LockoutEnd.HasValue && user.LockoutEnd.Value > DateTime.UtcNow)
@@ -104,21 +113,49 @@ namespace LANMIC_ComBank_Interface.HelpServices
                     //    user.AccessFailedCount = 0; // reset after locking
                     //}
 
-                    //await context.SaveChangesAsync();
-                    return (false, "Invalid username or password.", null);
+                    //await db.SaveChangesAsync();
+              
+                    return (false, "Invalid username or password.");
                 }
+               
+                var permissions = await (from ua in db.UserAuthorities
+                                         join f in db.FormDetails on ua.FormID equals f.FormID
+                                         where ua.UserID == user.ID
+                    select new UserAuthorityViewModel
+                    {
+                        ID = ua.ID,
+                        PermissionID = ua.PermissionID,
+                        FormID = ua.FormID,
+                        FormName = f.FormName,
+                        FormDescription = f.FormDescription,
+                        UserID = ua.UserID,
+                        CreatedAt = ua.CreatedAt,
+                        View = PermissionUtilities.Decode(ua.PermissionID).View,
+                        New = PermissionUtilities.Decode(ua.PermissionID).New,
+                        Edit = PermissionUtilities.Decode(ua.PermissionID).Edit,
+                        Delete = PermissionUtilities.Decode(ua.PermissionID).Delete,
+                        Print = PermissionUtilities.Decode(ua.PermissionID).Print
+                    }).ToListAsync();
+
+                UserSession.UserID = user.ID;
+                UserSession.Username = user.Username;
+                UserSession.UserPermissions = permissions;
+                         //   UserSession.IsAdmin = permissions.Any(p => p. == "Admin");
+                UserSession.LoginTime = DateTime.UtcNow;
+
+
 
                 //// success: reset failed count and lockout
                 //user.AccessFailedCount = 0;
                 //user.LockoutEnd = null;
+                //await db.SaveChangesAsync();
 
-                await context.SaveChangesAsync();
-
-                return (true, "Login successful.", user);
+                return (true, "Login successful.");
             }
             catch (Exception ex)
             {
-                return (false, "Login failed: " + ex.Message, null);
+                UserSession.Clear();
+                return (false, "Login failed: " + ex.Message);
             }
         }
     }

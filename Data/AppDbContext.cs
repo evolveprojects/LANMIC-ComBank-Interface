@@ -14,6 +14,8 @@ namespace LANMIC_ComBank_Interface.Data
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<FormDetails> FormDetails { get; set; }
         public DbSet<SageAPICredentials> SageAPICredentials { get; set; }
+        public DbSet<UserAuthority> UserAuthorities { get; set; }
+        public DbSet<Vender> Venders { get; set; }
 
         private readonly string _connectionString;
 

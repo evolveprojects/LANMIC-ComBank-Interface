@@ -9,10 +9,13 @@ namespace LANMIC_ComBank_Interface.Models.ViewModels
 {
     public class UserAuthorityViewModel : UserAuthority
     {
+        public string FormName { get; set; }
+        public string FormDescription { get; set; }
         public bool View { get; set; } = false;
         public bool New { get; set; } = false;
         public bool Edit { get; set; } = false;
         public bool Delete { get; set; } = false;
         public bool Print { get; set; } = false;
+    
     }
 }

@@ -43,20 +43,24 @@
             // 
             // txtUsername
             // 
+            txtUsername.Cursor = Cursors.IBeam;
             txtUsername.Font = new Font("Segoe UI", 12F);
             txtUsername.Location = new Point(12, 234);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(303, 29);
             txtUsername.TabIndex = 1;
+            txtUsername.KeyPress += txtUsername_KeyPress;
             // 
             // txtPassword
             // 
+            txtPassword.Cursor = Cursors.IBeam;
             txtPassword.Font = new Font("Segoe UI", 12F);
             txtPassword.Location = new Point(12, 290);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(303, 29);
             txtPassword.TabIndex = 2;
+            txtPassword.KeyPress += txtPassword_KeyPress;
             // 
             // label1
             // 
@@ -65,7 +69,7 @@
             label1.Location = new Point(10, 210);
             label1.Name = "label1";
             label1.Size = new Size(97, 18);
-            label1.TabIndex = 3;
+            label1.TabIndex = 0;
             label1.Text = "USERNAME";
             // 
             // label2
@@ -75,7 +79,7 @@
             label2.Location = new Point(10, 266);
             label2.Name = "label2";
             label2.Size = new Size(102, 18);
-            label2.TabIndex = 4;
+            label2.TabIndex = 0;
             label2.Text = "PASSWORD";
             // 
             // label3
@@ -91,22 +95,24 @@
             // 
             // btnSignIn
             // 
+            btnSignIn.Cursor = Cursors.Hand;
             btnSignIn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnSignIn.Location = new Point(227, 325);
             btnSignIn.Name = "btnSignIn";
             btnSignIn.Size = new Size(88, 30);
-            btnSignIn.TabIndex = 6;
+            btnSignIn.TabIndex = 3;
             btnSignIn.Text = "Sign In";
             btnSignIn.UseVisualStyleBackColor = true;
             btnSignIn.Click += btnSignIn_Click;
             // 
             // btnClose
             // 
+            btnClose.Cursor = Cursors.Hand;
             btnClose.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnClose.Location = new Point(133, 325);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(88, 31);
-            btnClose.TabIndex = 7;
+            btnClose.TabIndex = 4;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
@@ -144,6 +150,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
+            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

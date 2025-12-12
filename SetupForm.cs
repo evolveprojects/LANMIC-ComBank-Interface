@@ -68,6 +68,38 @@ namespace LANMIC_ComBank_Interface
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var config = new DatabaseConfigModel
+            {                 
+                    AppName = txtAppName.Text.Trim(),
+                    Server = txtServer.Text.Trim(),
+                    DatabaseName = txtDatabase.Text.Trim(),
+                    User = txtUser.Text.Trim(),
+                    Password = txtPassword.Text.Trim() 
+            };
+
+            // Save config to appsettings.json
+            AppConfigService.Save(config);
+
+            // Create database and tables if not exists
+            bool status = CreateDatabaseIfNotExists(config);
+
+            if (!status)
+            {
+               AppConfigService.Delete();
+               MessageBox.Show("Failed to create database and tables. Please check the logs for more details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Configuration saved successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+    
+    
         private bool CreateDatabaseIfNotExists(DatabaseConfigModel config)
         {
             string masterConnection = $"server={config.Server};" +
@@ -137,8 +169,8 @@ namespace LANMIC_ComBank_Interface
                                     //{
                                     //    new FormDetails { FormID = "Form1", FormName = "frmUserCreation", FormDescription = "User Creation" },
                                     //    new FormDetails { FormID = "Form2", FormName = "frmUserAuthorization", FormDescription = "User Authorization" },
-                                    //    new FormDetails { FormID = "Form3", FormName = "frmVenders", FormDescription = "Venders" },
-                                    //    new FormDetails { FormID = "Form3", FormName = "frmBanks", FormDescription = "Vender Banks" }
+                                    //    new FormDetails { FormID = "Form3", FormName = "frmVendors", FormDescription = "Vendors" },
+                                    //    new FormDetails { FormID = "Form3", FormName = "frmBanks", FormDescription = "Vendor Banks" }
                                     //};
 
                                     transaction.Commit();
@@ -197,35 +229,6 @@ namespace LANMIC_ComBank_Interface
             return status;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            var config = new DatabaseConfigModel
-            {                 
-                    AppName = txtAppName.Text.Trim(),
-                    Server = txtServer.Text.Trim(),
-                    DatabaseName = txtDatabase.Text.Trim(),
-                    User = txtUser.Text.Trim(),
-                    Password = txtPassword.Text.Trim() 
-            };
-
-            // Save config to appsettings.json
-            AppConfigService.Save(config);
-
-            // Create database and tables if not exists
-            bool status = CreateDatabaseIfNotExists(config);
-
-            if (!status)
-            {
-               AppConfigService.Delete();
-               MessageBox.Show("Failed to create database and tables. Please check the logs for more details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
-                MessageBox.Show("Configuration saved successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-        }
+    
     }
 }

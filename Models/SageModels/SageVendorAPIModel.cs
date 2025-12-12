@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace LANMIC_ComBank_Interface.Models.SageModels
 {
-    public class VenderModel
+    public class SageVendorAPIModel
     {
-        public string odatacontext { get; set; }
         public string VendorNumber { get; set; }
         public string ShortName { get; set; }
         public string GroupCode { get; set; }
         public string Status { get; set; }
         public object InactiveDate { get; set; }
-        public DateTime DateLastMaintained { get; set; }
+        public string DateLastMaintained { get; set; }
         public string OnHold { get; set; }
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
         public string ParticipantID { get; set; }
         public string VendorName { get; set; }
         public string AddressLine1 { get; set; }
@@ -52,50 +51,50 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public string Num1099CPRSTaxNumber { get; set; }
         public string TaxType { get; set; }
         public string Num1099CPRSCode { get; set; }
-        public int CreditLimit { get; set; }
-        public float BalanceDueInVendorCurrency { get; set; }
-        public float BalanceDueInFunctionalCurrency { get; set; }
-        public float TotalPrepaidInvoiceVendorCurr { get; set; }
-        public float TotalPrepaidInvoiceFunctionalCurr { get; set; }
+        public decimal CreditLimit { get; set; }
+        public decimal BalanceDueInVendorCurrency { get; set; }
+        public decimal BalanceDueInFunctionalCurrency { get; set; }
+        public decimal TotalPrepaidInvoiceVendorCurr { get; set; }
+        public decimal TotalPrepaidInvoiceFunctionalCurr { get; set; }
         public object DateOfLastRevaluation { get; set; }
-        public float LastRevaluationBalance { get; set; }
+        public decimal LastRevaluationBalance { get; set; }
         public int NumberOfOpenInvoices { get; set; }
         public int NumberOfPrepaidInvoices { get; set; }
         public int NumberOfPaidInvoices { get; set; }
         public int NumberOfDaysToPay { get; set; }
-        public DateTime DateOfLargestInvoice { get; set; }
-        public DateTime DateOfHighestBalance { get; set; }
+        public string DateOfLargestInvoice { get; set; }
+        public string DateOfHighestBalance { get; set; }
         public object DateOfLargestInvoiceLastYear { get; set; }
         public object DateOfHighestBalanceLastYear { get; set; }
-        public DateTime DateOfLastActivity { get; set; }
-        public DateTime DateOfLastInvoice { get; set; }
-        public DateTime DateOfLastCreditNote { get; set; }
+        public string DateOfLastActivity { get; set; }
+        public string DateOfLastInvoice { get; set; }
+        public string DateOfLastCreditNote { get; set; }
         public object DateOfLastDebitNote { get; set; }
-        public DateTime DateOfLastPayment { get; set; }
+        public string DateOfLastPayment { get; set; }
         public object DateOfLastDiscount { get; set; }
-        public DateTime DateOfLastAdjustment { get; set; }
+        public string DateOfLastAdjustment { get; set; }
         public string NumberOfLargestInvoice { get; set; }
         public string NumberOfLargestInvoiceLastY { get; set; }
-        public float LargestInvoiceVendorCurrency { get; set; }
-        public float HighestBalanceVendorCurrency { get; set; }
-        public float LargestInvoiceLastYearVendorCurrency { get; set; }
-        public float HighBalanceLastYearVendorCurrency { get; set; }
-        public int LastInvoiceAmtVendorCurrency { get; set; }
-        public float LastCreditNoteAmountVendorCurrency { get; set; }
-        public float LastDebitNoteAmountVendorCurrency { get; set; }
-        public int LastPaymentVendorCurrency { get; set; }
-        public float LastDiscountAmountVendorCurrency { get; set; }
-        public int LastAdjustmentAmountVendorCurrency { get; set; }
-        public float LargestInvoiceFunctionalCurrency { get; set; }
-        public float HighestBalanceFunctionalCurrency { get; set; }
-        public float LargestInvoiceLastYearFunctionalCurrency { get; set; }
-        public float HighBalanceLastYearFunctionalCurrency { get; set; }
-        public int LastInvoiceAmountFunctionalCurrency { get; set; }
-        public float LastCreditNoteAmountFunctionalCurrency { get; set; }
-        public float LastDebitNoteAmountFunctionalCurrency { get; set; }
-        public int LastPaymentFunctionalCurrency { get; set; }
-        public float LastDiscountAmountFunctionalCurrency { get; set; }
-        public int LastAdjustmentAmountFunctionalCurrency { get; set; }
+        public decimal LargestInvoiceVendorCurrency { get; set; }
+        public decimal HighestBalanceVendorCurrency { get; set; }
+        public decimal LargestInvoiceLastYearVendorCurrency { get; set; }
+        public decimal HighBalanceLastYearVendorCurrency { get; set; }
+        public decimal LastInvoiceAmtVendorCurrency { get; set; }
+        public decimal LastCreditNoteAmountVendorCurrency { get; set; }
+        public decimal LastDebitNoteAmountVendorCurrency { get; set; }
+        public decimal LastPaymentVendorCurrency { get; set; }
+        public decimal LastDiscountAmountVendorCurrency { get; set; }
+        public decimal LastAdjustmentAmountVendorCurrency { get; set; }
+        public decimal LargestInvoiceFunctionalCurrency { get; set; }
+        public decimal HighestBalanceFunctionalCurrency { get; set; }
+        public decimal LargestInvoiceLastYearFunctionalCurrency { get; set; }
+        public decimal HighBalanceLastYearFunctionalCurrency { get; set; }
+        public decimal LastInvoiceAmountFunctionalCurrency { get; set; }
+        public decimal LastCreditNoteAmountFunctionalCurrency { get; set; }
+        public decimal LastDebitNoteAmountFunctionalCurrency { get; set; }
+        public decimal LastPaymentFunctionalCurrency { get; set; }
+        public decimal LastDiscountAmountFunctionalCurrency { get; set; }
+        public decimal LastAdjustmentAmountFunctionalCurrency { get; set; }
         public string PaymentCode { get; set; }
         public string TaxRegistrationCode1 { get; set; }
         public string TaxRegistrationCode2 { get; set; }
@@ -104,10 +103,10 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public string TaxRegistrationCode5 { get; set; }
         public string DistributionType { get; set; }
         public string CheckLanguage { get; set; }
-        public float AverageDaysToPay { get; set; }
-        public float TotalInvoicesPaidFunctionalCurr { get; set; }
-        public float TotalInvoicesPaidVendorCurr { get; set; }
-        public int TotalNumberOfPayments { get; set; }
+        public decimal AverageDaysToPay { get; set; }
+        public decimal TotalInvoicesPaidFunctionalCurr { get; set; }
+        public decimal TotalInvoicesPaidVendorCurr { get; set; }
+        public decimal TotalNumberOfPayments { get; set; }
         public string TaxIncluded1 { get; set; }
         public string TaxIncluded2 { get; set; }
         public string TaxIncluded3 { get; set; }
@@ -122,8 +121,8 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public int PercentRetained { get; set; }
         public int DaysRetained { get; set; }
         public string RetainageTermsCode { get; set; }
-        public float AmountRetainedVendorCurrency { get; set; }
-        public float AmountRetainedFunctionalCurrency { get; set; }
+        public decimal AmountRetainedVendorCurrency { get; set; }
+        public decimal AmountRetainedFunctionalCurrency { get; set; }
         public int NumberOfOptionalFields { get; set; }
         public string ProcessCommandCode { get; set; }
         public int NextClientUniqueID { get; set; }
@@ -139,12 +138,12 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public bool FATCA { get; set; }
         public bool Num2ndTINNotice { get; set; }
         public string TaxWithholdingState { get; set; }
-        public List<VendorOptionalFieldValue> VendorOptionalFieldValues { get; set; }
-        public List<object> VendorContactSelection { get; set; }
+        public VendorOptionalFieldValues[] VendorOptionalFieldValues { get; set; }
+        public object[] VendorContactSelection { get; set; }
         public string UpdateOperation { get; set; }
     }
 
-    public class VendorOptionalFieldValue
+    public class VendorOptionalFieldValues
     {
         public string VendorNumber { get; set; }
         public string OptionalField { get; set; }
@@ -157,14 +156,17 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public string ValueSet { get; set; }
         public int TypedValueFieldIndex { get; set; }
         public string TextValue { get; set; }
-        public float AmountValue { get; set; }
+        public decimal AmountValue { get; set; }
         public int NumberValue { get; set; }
         public int IntegerValue { get; set; }
         public bool YesNoValue { get; set; }
         public object DateValue { get; set; }
-        public DateTime TimeValue { get; set; }
+        public string TimeValue { get; set; }
         public string OptionalFieldDescription { get; set; }
         public string ValueDescription { get; set; }
         public string UpdateOperation { get; set; }
     }
+
+
+
 }
