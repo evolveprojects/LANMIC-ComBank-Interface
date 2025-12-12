@@ -1,6 +1,9 @@
+using System.Windows.Forms;
 using LANMIC_ComBank_Interface.Forms.Tools;
 using LANMIC_ComBank_Interface.Forms.Tools.Sage;
 using LANMIC_ComBank_Interface.Forms.Tools.UserAuthorization;
+using LANMIC_ComBank_Interface.Models.SessionModel;
+using LANMIC_ComBank_Interface.Models.ViewModels;
 
 namespace LANMIC_ComBank_Interface
 {
@@ -16,8 +19,8 @@ namespace LANMIC_ComBank_Interface
         {
             lbDate.Text = DateTime.Now.ToLongDateString();
             timer.Start();
-            
-           // vendersToolStripMenuItem.Visible = false;  // hide Venders menu item
+
+            // vendorsToolStripMenuItem.Visible = false;  // hide Vendors menu item
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -32,6 +35,12 @@ namespace LANMIC_ComBank_Interface
                 activeForm.Close();
             }
 
+            //UserAuthorityViewModel userAuthorities = UserSession.UserPermissions.FirstOrDefault(x => x.FormName == childForm.Name);
+            //bool canView = userAuthorities != null ? userAuthorities.View : false;
+            //if (canView)
+            //{
+            var fn = childForm.Name;
+
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -40,6 +49,11 @@ namespace LANMIC_ComBank_Interface
             panelBody.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("You do not have permission to view this", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,14 +85,19 @@ namespace LANMIC_ComBank_Interface
             }
         }
 
-        private void vendersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void vendorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmVenders());
+            openChildForm(new frmVendors());
         }
 
         private void banksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new frmBanks());
+        }
+
+        private void APPostedPaymentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

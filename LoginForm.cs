@@ -21,7 +21,7 @@ using static System.Collections.Specialized.BitVector32;
 namespace LANMIC_ComBank_Interface
 {
     public partial class LoginForm : Form
-    {             
+    {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly AuthService _authService;
         public LoginForm()
@@ -29,6 +29,10 @@ namespace LANMIC_ComBank_Interface
             InitializeComponent();
             _authService = new AuthService(AppConfigService.ConnectionString());
             _ = InitializeDatabaseAsync();
+
+           txtUsername.Text="admin";
+           txtPassword.Text="admin123";
+            SignIn();
         }
 
         private async Task InitializeDatabaseAsync()
@@ -50,32 +54,7 @@ namespace LANMIC_ComBank_Interface
 
         private async void btnSignIn_Click(object sender, EventArgs e)
         {
-            btnSignIn.Enabled = false;
-            //lblStatus.Text = "Logging in...";
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
-            var (Success, Message, User) = await _authService.LoginAsync(username, password);
-
-            //lblStatus.Text = Message;
-            btnSignIn.Enabled = true;
-
-            if (Success)
-            {
-                // set current session (simple static holder)
-               // Session.CurrentUser = User;
-
-                // open main form
-                var main = new MainForm();
-                this.Hide();
-                main.ShowDialog();
-                this.Show();
-            }
-            else
-            {
-                log.Warn($"Failed login attempt for user '{username}'.");
-                MessageBox.Show(Message, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            SignIn();
 
             //if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password)) // Example validation
             //{               
@@ -121,5 +100,68 @@ namespace LANMIC_ComBank_Interface
             //    MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtUsername.Focus();
+        }
+
+        private async void SignIn()
+        {
+            btnSignIn.Enabled = false;
+            //lblStatus.Text = "Logging in...";
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            var (Success, Message) = await _authService.LoginAsync(username, password);
+
+            //lblStatus.Text = Message;
+            btnSignIn.Enabled = true;
+
+            if (Success)
+            {
+                // set current session (simple static holder)
+                // Session.CurrentUser = User;
+
+                // open main form
+                var main = new MainForm();
+                this.Hide();
+                main.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                log.Warn($"Failed login attempt for user '{username}'.");
+                MessageBox.Show(Message, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(txtUsername.Text))
+                {
+                    txtPassword.Focus();
+                }
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(txtPassword.Text) && !string.IsNullOrEmpty(txtUsername.Text))
+                {
+                    SignIn();
+                }
+                else if (string.IsNullOrEmpty(txtUsername.Text))
+                {
+                    txtUsername.Focus();
+                }
+            }
+        }
+
+
     }
 }

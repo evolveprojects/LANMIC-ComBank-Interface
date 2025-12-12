@@ -87,6 +87,7 @@
             // 
             txtPassword.Location = new Point(193, 215);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(270, 23);
             txtPassword.TabIndex = 1;
             // 
@@ -106,9 +107,9 @@
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(25, 134);
             label3.Name = "label3";
-            label3.Size = new Size(111, 21);
+            label3.Size = new Size(92, 21);
             label3.TabIndex = 0;
-            label3.Text = "SQL Server IP";
+            label3.Text = "SQL Server";
             // 
             // label4
             // 
@@ -196,7 +197,7 @@
             MaximumSize = new Size(500, 500);
             MinimumSize = new Size(500, 500);
             Name = "SetupForm";
-            Text = "d";
+            Text = "Setup Application";
             ResumeLayout(false);
             PerformLayout();
         }

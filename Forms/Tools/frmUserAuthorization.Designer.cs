@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblUserAuthority = new Label();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             txtUserName = new Label();
             txtOperationalModule = new Label();
             cmbUserName = new ComboBox();
@@ -42,8 +42,12 @@
             chkView = new CheckBox();
             btnRemove = new Button();
             btnAdd = new Button();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
+            dataGridView = new DataGridView();
+            UserID = new DataGridViewTextBoxColumn();
+            FormID = new DataGridViewTextBoxColumn();
+            PermissionID = new DataGridViewTextBoxColumn();
+            UserName = new DataGridViewTextBoxColumn();
+            ModuleName = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewCheckBoxColumn();
             Column3 = new DataGridViewCheckBoxColumn();
             Column4 = new DataGridViewCheckBoxColumn();
@@ -53,8 +57,9 @@
             btnClear = new Button();
             btnPrint = new Button();
             btnClose = new Button();
+            btnNew = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // lblUserAuthority
@@ -67,11 +72,6 @@
             lblUserAuthority.Size = new Size(191, 30);
             lblUserAuthority.TabIndex = 7;
             lblUserAuthority.Text = "USER AUTHORITY";
-            // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // txtUserName
             // 
@@ -96,19 +96,25 @@
             // cmbUserName
             // 
             cmbUserName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbUserName.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUserName.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbUserName.FormattingEnabled = true;
             cmbUserName.Location = new Point(173, 45);
             cmbUserName.Name = "cmbUserName";
-            cmbUserName.Size = new Size(615, 23);
+            cmbUserName.Size = new Size(615, 22);
             cmbUserName.TabIndex = 10;
+            cmbUserName.SelectedIndexChanged += cmbUserName_SelectedIndexChanged;
             // 
             // cmbOperationalModule
             // 
             cmbOperationalModule.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cmbOperationalModule.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOperationalModule.Enabled = false;
+            cmbOperationalModule.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmbOperationalModule.FormattingEnabled = true;
             cmbOperationalModule.Location = new Point(173, 74);
             cmbOperationalModule.Name = "cmbOperationalModule";
-            cmbOperationalModule.Size = new Size(615, 23);
+            cmbOperationalModule.Size = new Size(615, 22);
             cmbOperationalModule.TabIndex = 11;
             // 
             // panel1
@@ -128,6 +134,7 @@
             // chkPrint
             // 
             chkPrint.AutoSize = true;
+            chkPrint.Enabled = false;
             chkPrint.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkPrint.Location = new Point(287, 7);
             chkPrint.Name = "chkPrint";
@@ -135,10 +142,12 @@
             chkPrint.TabIndex = 4;
             chkPrint.Text = "Print";
             chkPrint.UseVisualStyleBackColor = true;
+            chkPrint.CheckedChanged += CheckedChanged;
             // 
             // chkDelete
             // 
             chkDelete.AutoSize = true;
+            chkDelete.Enabled = false;
             chkDelete.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkDelete.Location = new Point(212, 7);
             chkDelete.Name = "chkDelete";
@@ -146,10 +155,12 @@
             chkDelete.TabIndex = 3;
             chkDelete.Text = "Delete";
             chkDelete.UseVisualStyleBackColor = true;
+            chkDelete.CheckedChanged += CheckedChanged;
             // 
             // chkEdit
             // 
             chkEdit.AutoSize = true;
+            chkEdit.Enabled = false;
             chkEdit.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkEdit.Location = new Point(155, 7);
             chkEdit.Name = "chkEdit";
@@ -157,10 +168,12 @@
             chkEdit.TabIndex = 2;
             chkEdit.Text = "Edit";
             chkEdit.UseVisualStyleBackColor = true;
+            chkEdit.CheckedChanged += CheckedChanged;
             // 
             // chkNew
             // 
             chkNew.AutoSize = true;
+            chkNew.Enabled = false;
             chkNew.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkNew.Location = new Point(93, 7);
             chkNew.Name = "chkNew";
@@ -168,10 +181,12 @@
             chkNew.TabIndex = 1;
             chkNew.Text = "New";
             chkNew.UseVisualStyleBackColor = true;
+            chkNew.CheckedChanged += CheckedChanged;
             // 
             // chkView
             // 
             chkView.AutoSize = true;
+            chkView.Enabled = false;
             chkView.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             chkView.Location = new Point(28, 7);
             chkView.Name = "chkView";
@@ -179,10 +194,12 @@
             chkView.TabIndex = 0;
             chkView.Text = "View";
             chkView.UseVisualStyleBackColor = true;
+            chkView.CheckedChanged += chkView_CheckedChanged;
             // 
             // btnRemove
             // 
             btnRemove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRemove.Enabled = false;
             btnRemove.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRemove.Location = new Point(525, 5);
             btnRemove.Name = "btnRemove";
@@ -190,10 +207,12 @@
             btnRemove.TabIndex = 14;
             btnRemove.Text = "Remove";
             btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnAdd
             // 
             btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAdd.Enabled = false;
             btnAdd.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdd.Location = new Point(444, 5);
             btnAdd.Name = "btnAdd";
@@ -203,25 +222,61 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridView1.Location = new Point(12, 142);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(776, 433);
-            dataGridView1.TabIndex = 15;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { UserID, FormID, PermissionID, UserName, ModuleName, Column2, Column3, Column4, Column5, Column6 });
+            dataGridView.Location = new Point(12, 142);
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new Size(776, 433);
+            dataGridView.TabIndex = 15;
+            dataGridView.CellDoubleClick += dataGridView_CellDoubleClick;
             // 
-            // Column1
+            // UserID
             // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "Module Name";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
+            UserID.HeaderText = "User ID";
+            UserID.Name = "UserID";
+            UserID.ReadOnly = true;
+            UserID.Visible = false;
+            // 
+            // FormID
+            // 
+            FormID.HeaderText = "Form ID";
+            FormID.Name = "FormID";
+            FormID.ReadOnly = true;
+            FormID.Visible = false;
+            // 
+            // PermissionID
+            // 
+            PermissionID.HeaderText = "Permission ID";
+            PermissionID.Name = "PermissionID";
+            PermissionID.ReadOnly = true;
+            PermissionID.Visible = false;
+            // 
+            // UserName
+            // 
+            UserName.HeaderText = "User Name";
+            UserName.Name = "UserName";
+            UserName.ReadOnly = true;
+            // 
+            // ModuleName
+            // 
+            ModuleName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ModuleName.HeaderText = "Module Name";
+            ModuleName.Name = "ModuleName";
+            ModuleName.ReadOnly = true;
             // 
             // Column2
             // 
@@ -266,6 +321,7 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSave.Enabled = false;
             btnSave.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.Location = new Point(470, 581);
             btnSave.Name = "btnSave";
@@ -273,23 +329,24 @@
             btnSave.TabIndex = 16;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
-            btnClear.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClear.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnClear.Location = new Point(551, 581);
+            btnClear.Location = new Point(632, 581);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(75, 23);
             btnClear.TabIndex = 17;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnPrint
             // 
             btnPrint.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnPrint.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPrint.Location = new Point(632, 581);
+            btnPrint.Location = new Point(551, 581);
             btnPrint.Name = "btnPrint";
             btnPrint.Size = new Size(75, 23);
             btnPrint.TabIndex = 18;
@@ -298,7 +355,6 @@
             // 
             // btnClose
             // 
-            btnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClose.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.Location = new Point(713, 581);
             btnClose.Name = "btnClose";
@@ -306,17 +362,31 @@
             btnClose.TabIndex = 19;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
+            // btnNew
+            // 
+            btnNew.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNew.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNew.Location = new Point(389, 581);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(75, 23);
+            btnNew.TabIndex = 20;
+            btnNew.Text = "New";
+            btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
             // frmUserAuthorization
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 616);
+            Controls.Add(btnNew);
             Controls.Add(btnClose);
             Controls.Add(btnPrint);
             Controls.Add(btnClear);
             Controls.Add(btnSave);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridView);
             Controls.Add(panel1);
             Controls.Add(cmbOperationalModule);
             Controls.Add(cmbUserName);
@@ -325,16 +395,16 @@
             Controls.Add(lblUserAuthority);
             Name = "frmUserAuthorization";
             Text = "frmUserAuthorization";
+            Load += frmUserAuthorization_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label lblUserAuthority;
-        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Label txtUserName;
         private Label txtOperationalModule;
         private ComboBox cmbUserName;
@@ -347,12 +417,17 @@
         private CheckBox chkEdit;
         private Button btnAdd;
         private Button btnRemove;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridView;
         private Button btnSave;
         private Button btnClear;
         private Button btnPrint;
         private Button btnClose;
-        private DataGridViewTextBoxColumn Column1;
+        private Button btnNew;
+        private DataGridViewTextBoxColumn UserID;
+        private DataGridViewTextBoxColumn FormID;
+        private DataGridViewTextBoxColumn PermissionID;
+        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn ModuleName;
         private DataGridViewCheckBoxColumn Column2;
         private DataGridViewCheckBoxColumn Column3;
         private DataGridViewCheckBoxColumn Column4;

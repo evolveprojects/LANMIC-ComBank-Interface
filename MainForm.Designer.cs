@@ -37,7 +37,7 @@
             reportToolStripMenuItem = new ToolStripMenuItem();
             toolsToolStripMenuItem = new ToolStripMenuItem();
             customizeToolStripMenuItem = new ToolStripMenuItem();
-            vendersToolStripMenuItem = new ToolStripMenuItem();
+            vendorsToolStripMenuItem = new ToolStripMenuItem();
             banksToolStripMenuItem = new ToolStripMenuItem();
             paymToolStripMenuItem = new ToolStripMenuItem();
             combankToolStripMenuItem = new ToolStripMenuItem();
@@ -105,25 +105,25 @@
             // 
             // customizeToolStripMenuItem
             // 
-            customizeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendersToolStripMenuItem, banksToolStripMenuItem, paymToolStripMenuItem });
+            customizeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { vendorsToolStripMenuItem, banksToolStripMenuItem, paymToolStripMenuItem });
             customizeToolStripMenuItem.Image = (Image)resources.GetObject("customizeToolStripMenuItem.Image");
             customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            customizeToolStripMenuItem.Size = new Size(172, 22);
+            customizeToolStripMenuItem.Size = new Size(180, 22);
             customizeToolStripMenuItem.Text = "Sage";
             // 
-            // vendersToolStripMenuItem
+            // vendorsToolStripMenuItem
             // 
-            vendersToolStripMenuItem.Image = (Image)resources.GetObject("vendersToolStripMenuItem.Image");
-            vendersToolStripMenuItem.Name = "vendersToolStripMenuItem";
-            vendersToolStripMenuItem.Size = new Size(165, 22);
-            vendersToolStripMenuItem.Text = "Venders";
-            vendersToolStripMenuItem.Click += vendersToolStripMenuItem_Click;
+            vendorsToolStripMenuItem.Image = (Image)resources.GetObject("vendorsToolStripMenuItem.Image");
+            vendorsToolStripMenuItem.Name = "vendorsToolStripMenuItem";
+            vendorsToolStripMenuItem.Size = new Size(183, 22);
+            vendorsToolStripMenuItem.Text = "Vendors";
+            vendorsToolStripMenuItem.Click += vendorsToolStripMenuItem_Click;
             // 
             // banksToolStripMenuItem
             // 
             banksToolStripMenuItem.Image = (Image)resources.GetObject("banksToolStripMenuItem.Image");
             banksToolStripMenuItem.Name = "banksToolStripMenuItem";
-            banksToolStripMenuItem.Size = new Size(165, 22);
+            banksToolStripMenuItem.Size = new Size(183, 22);
             banksToolStripMenuItem.Text = "Banks";
             banksToolStripMenuItem.Click += banksToolStripMenuItem_Click;
             // 
@@ -131,21 +131,22 @@
             // 
             paymToolStripMenuItem.Image = (Image)resources.GetObject("paymToolStripMenuItem.Image");
             paymToolStripMenuItem.Name = "paymToolStripMenuItem";
-            paymToolStripMenuItem.Size = new Size(165, 22);
-            paymToolStripMenuItem.Text = "Import Payments";
+            paymToolStripMenuItem.Size = new Size(183, 22);
+            paymToolStripMenuItem.Text = "AP Posted Payments";
+            paymToolStripMenuItem.Click += APPostedPaymentsToolStripMenuItem_Click;
             // 
             // combankToolStripMenuItem
             // 
             combankToolStripMenuItem.Image = (Image)resources.GetObject("combankToolStripMenuItem.Image");
             combankToolStripMenuItem.Name = "combankToolStripMenuItem";
-            combankToolStripMenuItem.Size = new Size(172, 22);
+            combankToolStripMenuItem.Size = new Size(180, 22);
             combankToolStripMenuItem.Text = "Commercial Bank";
             // 
             // userCreationToolStripMenuItem
             // 
             userCreationToolStripMenuItem.Image = (Image)resources.GetObject("userCreationToolStripMenuItem.Image");
             userCreationToolStripMenuItem.Name = "userCreationToolStripMenuItem";
-            userCreationToolStripMenuItem.Size = new Size(172, 22);
+            userCreationToolStripMenuItem.Size = new Size(180, 22);
             userCreationToolStripMenuItem.Text = "User Creation";
             userCreationToolStripMenuItem.Click += userCreationToolStripMenuItem_Click;
             // 
@@ -153,7 +154,7 @@
             // 
             userAuthorizationToolStripMenuItem.Image = (Image)resources.GetObject("userAuthorizationToolStripMenuItem.Image");
             userAuthorizationToolStripMenuItem.Name = "userAuthorizationToolStripMenuItem";
-            userAuthorizationToolStripMenuItem.Size = new Size(172, 22);
+            userAuthorizationToolStripMenuItem.Size = new Size(180, 22);
             userAuthorizationToolStripMenuItem.Text = "User Authorization";
             userAuthorizationToolStripMenuItem.Click += userAuthorizationToolStripMenuItem_Click;
             // 
@@ -278,7 +279,7 @@
         private ToolStripMenuItem homeToolStripMenuItem;
         private ToolStripMenuItem settingToolStripMenuItem;
         private ToolStripMenuItem databaseBackupToolStripMenuItem;
-        private ToolStripMenuItem vendersToolStripMenuItem;
+        private ToolStripMenuItem vendorsToolStripMenuItem;
         private ToolStripMenuItem banksToolStripMenuItem;
         private ToolStripMenuItem paymToolStripMenuItem;
     }

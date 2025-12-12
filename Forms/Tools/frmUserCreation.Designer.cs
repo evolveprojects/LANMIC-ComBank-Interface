@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             label2 = new Label();
-            Cmb = new ComboBox();
             textBox1 = new TextBox();
             label3 = new Label();
             textBox2 = new TextBox();
@@ -44,47 +42,29 @@
             btnCancel = new Button();
             dgvUserDetails = new DataGridView();
             UserID = new DataGridViewTextBoxColumn();
-            Username = new DataGridViewTextBoxColumn();
             IsActive = new DataGridViewCheckBoxColumn();
+            Username = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
             lblUserCreation = new Label();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             ((System.ComponentModel.ISupportInitialize)dgvUserDetails).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 14);
-            label1.TabIndex = 0;
-            label1.Text = "User ID";
-            label1.Click += label1_Click;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 74);
+            label2.Location = new Point(12, 46);
             label2.Name = "label2";
             label2.Size = new Size(74, 14);
             label2.TabIndex = 1;
             label2.Text = "Username";
             // 
-            // Cmb
-            // 
-            Cmb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            Cmb.FormattingEnabled = true;
-            Cmb.Location = new Point(155, 39);
-            Cmb.Name = "Cmb";
-            Cmb.Size = new Size(532, 23);
-            Cmb.TabIndex = 2;
-            // 
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(156, 68);
+            textBox1.Enabled = false;
+            textBox1.Location = new Point(156, 40);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(532, 21);
             textBox1.TabIndex = 3;
@@ -93,16 +73,16 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 99);
+            label3.Location = new Point(12, 71);
             label3.Name = "label3";
             label3.Size = new Size(72, 14);
             label3.TabIndex = 4;
             label3.Text = "Password";
-            label3.Click += label3_Click;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(155, 93);
+            textBox2.Enabled = false;
+            textBox2.Location = new Point(155, 65);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(250, 21);
             textBox2.TabIndex = 5;
@@ -111,16 +91,16 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(12, 124);
+            label4.Location = new Point(12, 96);
             label4.Name = "label4";
             label4.Size = new Size(128, 14);
             label4.TabIndex = 6;
             label4.Text = "Confirm Password";
-            label4.Click += label4_Click;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(155, 120);
+            textBox3.Enabled = false;
+            textBox3.Location = new Point(155, 92);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(250, 21);
             textBox3.TabIndex = 7;
@@ -172,8 +152,9 @@
             // chkActive
             // 
             chkActive.AutoSize = true;
+            chkActive.Enabled = false;
             chkActive.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkActive.Location = new Point(411, 92);
+            chkActive.Location = new Point(411, 64);
             chkActive.Name = "chkActive";
             chkActive.Size = new Size(63, 18);
             chkActive.TabIndex = 12;
@@ -198,12 +179,12 @@
             dgvUserDetails.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvUserDetails.BackgroundColor = SystemColors.AppWorkspace;
             dgvUserDetails.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUserDetails.Columns.AddRange(new DataGridViewColumn[] { UserID, Username, IsActive });
+            dgvUserDetails.Columns.AddRange(new DataGridViewColumn[] { UserID, IsActive, Username, Status });
             dgvUserDetails.GridColor = SystemColors.ControlDark;
-            dgvUserDetails.Location = new Point(12, 147);
+            dgvUserDetails.Location = new Point(12, 119);
             dgvUserDetails.Name = "dgvUserDetails";
             dgvUserDetails.ReadOnly = true;
-            dgvUserDetails.Size = new Size(675, 255);
+            dgvUserDetails.Size = new Size(675, 285);
             dgvUserDetails.TabIndex = 15;
             // 
             // UserID
@@ -211,6 +192,14 @@
             UserID.HeaderText = "User ID";
             UserID.Name = "UserID";
             UserID.ReadOnly = true;
+            UserID.Visible = false;
+            // 
+            // IsActive
+            // 
+            IsActive.HeaderText = "Is Active";
+            IsActive.Name = "IsActive";
+            IsActive.ReadOnly = true;
+            IsActive.Visible = false;
             // 
             // Username
             // 
@@ -219,11 +208,11 @@
             Username.Name = "Username";
             Username.ReadOnly = true;
             // 
-            // IsActive
+            // Status
             // 
-            IsActive.HeaderText = "Is Active";
-            IsActive.Name = "IsActive";
-            IsActive.ReadOnly = true;
+            Status.HeaderText = "Status";
+            Status.Name = "Status";
+            Status.ReadOnly = true;
             // 
             // lblUserCreation
             // 
@@ -259,9 +248,7 @@
             Controls.Add(textBox2);
             Controls.Add(label3);
             Controls.Add(textBox1);
-            Controls.Add(Cmb);
             Controls.Add(label2);
-            Controls.Add(label1);
             Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "frmUserCreation";
             StartPosition = FormStartPosition.CenterScreen;
@@ -273,10 +260,7 @@
         }
 
         #endregion
-
-        private Label label1;
         private Label label2;
-        private ComboBox Cmb;
         private TextBox textBox1;
         private Label label3;
         private TextBox textBox2;
@@ -289,10 +273,11 @@
         private CheckBox chkActive;
         private Button btnCancel;
         internal DataGridView dgvUserDetails;
-        private DataGridViewTextBoxColumn UserID;
-        private DataGridViewTextBoxColumn Username;
-        private DataGridViewCheckBoxColumn IsActive;
         private Label lblUserCreation;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private DataGridViewTextBoxColumn UserID;
+        private DataGridViewCheckBoxColumn IsActive;
+        private DataGridViewTextBoxColumn Username;
+        private DataGridViewTextBoxColumn Status;
     }
 }
