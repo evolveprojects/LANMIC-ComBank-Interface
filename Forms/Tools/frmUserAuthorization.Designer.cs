@@ -333,6 +333,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClear.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.Location = new Point(632, 581);
             btnClear.Name = "btnClear";
@@ -355,6 +356,7 @@
             // 
             // btnClose
             // 
+            btnClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClose.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.Location = new Point(713, 581);
             btnClose.Name = "btnClose";

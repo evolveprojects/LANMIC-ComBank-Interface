@@ -16,7 +16,7 @@ namespace LANMIC_ComBank_Interface.Models.DatabaseModels
         [Required]                  // NOT NULL
         [MaxLength(100)]
         [Column(TypeName = "nvarchar(100)")]  // Set NVARCHAR
-        public string URL { get; set; }
+        public string Domain { get; set; }
         [Required]                  // NOT NULL
         [MaxLength(50)]
         [Column(TypeName = "nvarchar(50)")]  // Set NVARCHAR
@@ -29,7 +29,13 @@ namespace LANMIC_ComBank_Interface.Models.DatabaseModels
         [MaxLength(50)]
         [Column(TypeName = "nvarchar(50)")]  // Set NVARCHAR
         public string Password { get; set; }
-     
-     
+        [Required]                  // NOT NULL
+        [MaxLength(50)]
+        [Column(TypeName = "nvarchar(10)")]  // Set NVARCHAR
+        public string ApiVersion { get; set; }
+        [Required]                  // NOT NULL
+        [MaxLength(50)]
+        [Column(TypeName = "nvarchar(10)")]  // Set NVARCHAR
+        public string Tenant { get; set; }
     }
 }

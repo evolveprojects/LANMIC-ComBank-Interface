@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LANMIC_ComBank_Interface.Enums;
 
 namespace LANMIC_ComBank_Interface.Models.SageModels
 {
     public class SageAPPostedPaymentsAPIModel
     {
         public string BankCode { get; set; }
-        public string VendorNumber { get; set; }
+        public string VendorNumber { get; set; } 
+
+        public string VendorName { get; set; }
+        public string Email { get; set; }
+        public string SWIFT_Code { get; set; }
+        public string BankAccountNo { get; set; }
+        public string BankName { get; set; }
+
         public string CheckNumber { get; set; }
         public int CheckSerialNumber { get; set; }
         public DateTime CheckDate { get; set; }
         public DateTime BatchDate { get; set; }
-        public int CheckAmountVendorCurrency { get; set; }
-        public int PaymentAmount { get; set; }
+        public decimal CheckAmountVendorCurrency { get; set; }
+        public decimal PaymentAmount { get; set; }
         public decimal DiscountAmount { get; set; }
         public string PaymentCode { get; set; }
         public string CurrencyCode { get; set; }
@@ -31,7 +39,7 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public int BatchNumber { get; set; }
         public int EntryNumber { get; set; }
         public string CheckCleared { get; set; }
-        public int CheckAmountFunctionalCurrency { get; set; }
+        public decimal CheckAmountFunctionalCurrency { get; set; }
         public decimal AmountAdjusted { get; set; }
         public object DateCleared { get; set; }
         public object DateReversed { get; set; }
@@ -55,11 +63,11 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public string TaxAuthority3 { get; set; }
         public string TaxAuthority4 { get; set; }
         public string TaxAuthority5 { get; set; }
-        public int TaxClass1 { get; set; }
-        public int TaxClass2 { get; set; }
-        public int TaxClass3 { get; set; }
-        public int TaxClass4 { get; set; }
-        public int TaxClass5 { get; set; }
+        public decimal TaxClass1 { get; set; }
+        public decimal TaxClass2 { get; set; }
+        public decimal TaxClass3 { get; set; }
+        public decimal TaxClass4 { get; set; }
+        public decimal TaxClass5 { get; set; }
         public decimal TaxBase1 { get; set; }
         public decimal TaxBase2 { get; set; }
         public decimal TaxBase3 { get; set; }
@@ -71,7 +79,7 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public decimal TaxAmount4 { get; set; }
         public decimal TaxAmount5 { get; set; }
         public decimal TaxTotal { get; set; }
-        public int DistributionAmountNetOfTaxes { get; set; }
+        public decimal DistributionAmountNetOfTaxes { get; set; }
         public decimal TaxAllocatedTotal { get; set; }
         public decimal TaxExpensedTotal { get; set; }
         public decimal TaxRecoverableTotal { get; set; }
@@ -101,7 +109,7 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public decimal FunctionalTaxAmount4 { get; set; }
         public decimal FunctionalTaxAmount5 { get; set; }
         public decimal FunctionalTaxTotal { get; set; }
-        public int FunctionalDistributionAmountNetOfTaxes { get; set; }
+        public decimal FunctionalDistributionAmountNetOfTaxes { get; set; }
         public decimal FunctionalTaxAllocatedTotal { get; set; }
         public decimal FunctionalTaxExpensedTotal { get; set; }
         public decimal FunctionalTaxRecoverableTotal { get; set; }
@@ -125,6 +133,8 @@ namespace LANMIC_ComBank_Interface.Models.SageModels
         public decimal ReverseChargesAmount4 { get; set; }
         public decimal ReverseChargesAmount5 { get; set; }
         public string UpdateOperation { get; set; }
+        public PaymentStatus Status { get; internal set; }
+        public string ErrorMessage { get; internal set; }
     }
 
 

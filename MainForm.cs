@@ -1,9 +1,10 @@
 using System.Windows.Forms;
+using LANMIC_ComBank_Interface.Forms.Setting.CommercialBank;
+using LANMIC_ComBank_Interface.Forms.Setting.Sage;
 using LANMIC_ComBank_Interface.Forms.Tools;
+using LANMIC_ComBank_Interface.Forms.Tools.CommercialBank;
 using LANMIC_ComBank_Interface.Forms.Tools.Sage;
 using LANMIC_ComBank_Interface.Forms.Tools.UserAuthorization;
-using LANMIC_ComBank_Interface.Models.SessionModel;
-using LANMIC_ComBank_Interface.Models.ViewModels;
 
 namespace LANMIC_ComBank_Interface
 {
@@ -95,9 +96,24 @@ namespace LANMIC_ComBank_Interface
             openChildForm(new frmBanks());
         }
 
-        private void APPostedPaymentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void paymToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            openChildForm(new frmAPPostedPayments());
+        }
 
+        private void sageAPICredentialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSageApiCredentials());
+        }
+
+        private void combankAPICredentialsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmComBankAPICredentials());
+        }
+
+        private void sendPaymentsToBankAPIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmSendPaymentsToBankAPI());
         }
     }
 }

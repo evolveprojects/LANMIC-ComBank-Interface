@@ -15,7 +15,4 @@ namespace LANMIC_ComBank_Interface.Models.SystemModels
         public string Password { get; set; }
     }
 
-
-
-
 }

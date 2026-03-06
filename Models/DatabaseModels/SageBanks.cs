@@ -8,41 +8,35 @@ using System.Threading.Tasks;
 
 namespace LANMIC_ComBank_Interface.Models.DatabaseModels
 {
-    public class Vender
+    public class SageBanks
     {
         [Key]                       // Primary Key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Auto Increment (Identity)
         public int Id { get; set; }
+
         [Required]                  // NOT NULL
         [MaxLength(100)]
         [Column(TypeName = "nvarchar(50)")]  // Set NVARCHAR
-        public string VendorNumber { get; set; }
+        public string BankCode { get; set; }
+
         [Required]                  // NOT NULL
         [MaxLength(100)]
-        [Column(TypeName = "nvarchar(100)")]  // Set NVARCHAR
-        public string VendorName { get; set; }
-    
-        [MaxLength(100)]
-        [Column(TypeName = "nvarchar(100)")]  // Set NVARCHAR
+        [Column(TypeName = "nvarchar(150)")]  // Set NVARCHAR
         public string BankName { get; set; }
-               
-        [MaxLength(100)]
-        [Column(TypeName = "nvarchar(50)")]  // Set NVARCHAR
-        public string SWIFT_Code { get; set; }
 
+        [Required]                  // NOT NULL
         [MaxLength(100)]
         [Column(TypeName = "nvarchar(100)")]  // Set NVARCHAR
-        public string Email { get; set; }
+        public string BankAccountNo { get; set; }
+
+        [Required]                  // NOT NULL
+        [MaxLength(100)]
+        [Column(TypeName = "nvarchar(50)")]  // Set NVARCHAR
+        public string CurrencyCode { get; set; }
+
         public DateTime Created_At { get; set; } = DateTime.Now;
-        public bool Status { get; set; } = true;
 
-        //public Vender() {
-        //    VendorNumber = string.Empty;
-        //    VendorName = string.Empty;
-        //    BankCode = string.Empty;
-        //    Email = string.Empty;
 
-        //}
 
     }
 }

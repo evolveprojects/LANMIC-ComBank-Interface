@@ -45,6 +45,8 @@
             userAuthorizationToolStripMenuItem = new ToolStripMenuItem();
             settingToolStripMenuItem = new ToolStripMenuItem();
             databaseBackupToolStripMenuItem = new ToolStripMenuItem();
+            sageAPICredentialsToolStripMenuItem = new ToolStripMenuItem();
+            combankAPICredentialsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             panelBody = new Panel();
@@ -52,6 +54,7 @@
             lbDate = new Label();
             pictureBox = new PictureBox();
             timer = new System.Windows.Forms.Timer(components);
+            sendPaymentsToBankAPIToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             panelBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
@@ -133,10 +136,11 @@
             paymToolStripMenuItem.Name = "paymToolStripMenuItem";
             paymToolStripMenuItem.Size = new Size(183, 22);
             paymToolStripMenuItem.Text = "AP Posted Payments";
-            paymToolStripMenuItem.Click += APPostedPaymentsToolStripMenuItem_Click;
+            paymToolStripMenuItem.Click += paymToolStripMenuItem_Click;
             // 
             // combankToolStripMenuItem
             // 
+            combankToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sendPaymentsToBankAPIToolStripMenuItem });
             combankToolStripMenuItem.Image = (Image)resources.GetObject("combankToolStripMenuItem.Image");
             combankToolStripMenuItem.Name = "combankToolStripMenuItem";
             combankToolStripMenuItem.Size = new Size(180, 22);
@@ -160,7 +164,7 @@
             // 
             // settingToolStripMenuItem
             // 
-            settingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { databaseBackupToolStripMenuItem });
+            settingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { databaseBackupToolStripMenuItem, sageAPICredentialsToolStripMenuItem, combankAPICredentialsToolStripMenuItem });
             settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             settingToolStripMenuItem.Size = new Size(56, 20);
             settingToolStripMenuItem.Text = "&Setting";
@@ -169,8 +173,22 @@
             // 
             databaseBackupToolStripMenuItem.Image = (Image)resources.GetObject("databaseBackupToolStripMenuItem.Image");
             databaseBackupToolStripMenuItem.Name = "databaseBackupToolStripMenuItem";
-            databaseBackupToolStripMenuItem.Size = new Size(164, 22);
+            databaseBackupToolStripMenuItem.Size = new Size(209, 22);
             databaseBackupToolStripMenuItem.Text = "Database Backup";
+            // 
+            // sageAPICredentialsToolStripMenuItem
+            // 
+            sageAPICredentialsToolStripMenuItem.Name = "sageAPICredentialsToolStripMenuItem";
+            sageAPICredentialsToolStripMenuItem.Size = new Size(209, 22);
+            sageAPICredentialsToolStripMenuItem.Text = "Sage API Credentials";
+            sageAPICredentialsToolStripMenuItem.Click += sageAPICredentialsToolStripMenuItem_Click;
+            // 
+            // combankAPICredentialsToolStripMenuItem
+            // 
+            combankAPICredentialsToolStripMenuItem.Name = "combankAPICredentialsToolStripMenuItem";
+            combankAPICredentialsToolStripMenuItem.Size = new Size(209, 22);
+            combankAPICredentialsToolStripMenuItem.Text = "Combank API Credentials";
+            combankAPICredentialsToolStripMenuItem.Click += combankAPICredentialsToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
@@ -234,6 +252,13 @@
             // 
             timer.Tick += timer_Tick;
             // 
+            // sendPaymentsToBankAPIToolStripMenuItem
+            // 
+            sendPaymentsToBankAPIToolStripMenuItem.Name = "sendPaymentsToBankAPIToolStripMenuItem";
+            sendPaymentsToBankAPIToolStripMenuItem.Size = new Size(219, 22);
+            sendPaymentsToBankAPIToolStripMenuItem.Text = "Send Payments to Bank API";
+            sendPaymentsToBankAPIToolStripMenuItem.Click += sendPaymentsToBankAPIToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -282,5 +307,8 @@
         private ToolStripMenuItem vendorsToolStripMenuItem;
         private ToolStripMenuItem banksToolStripMenuItem;
         private ToolStripMenuItem paymToolStripMenuItem;
+        private ToolStripMenuItem sageAPICredentialsToolStripMenuItem;
+        private ToolStripMenuItem combankAPICredentialsToolStripMenuItem;
+        private ToolStripMenuItem sendPaymentsToBankAPIToolStripMenuItem;
     }
 }

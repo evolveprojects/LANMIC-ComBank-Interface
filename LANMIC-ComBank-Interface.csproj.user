@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\Setting\frmComBankAPICredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Tools\CommercialBank\frmSendPaymentsToBankAPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Tools\frmUserAuthorization.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Tools\frmUserCreation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Tools\Sage\frmAPPostedPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Tools\Sage\frmBanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Setting\frmSageApiCredentials.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Tools\Sage\frmVendors.cs">
